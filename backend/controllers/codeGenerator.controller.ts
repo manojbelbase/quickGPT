@@ -23,7 +23,7 @@ export const generateCode = async (req: Request, res: Response): Promise<void> =
 
         // 🔥 OpenRouter AI call (you can change the model)
         const aiResponse = await openRouter.post('/chat/completions', {
-            model: 'mistralai/devstral-2512:free',
+            model: 'google/gemma-4-31b-it:free',
             messages: [{ role: 'user', content: formattedPrompt }],
             temperature: 0.4,
             max_tokens: 2000,
