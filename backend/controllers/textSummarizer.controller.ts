@@ -29,7 +29,7 @@ export const generateSummary = async (req: Request, res: Response): Promise<void
 
         // 🔥 Call OpenRouter AI
         const aiResponse = await openRouter.post("/chat/completions", {
-            model: "alibaba/tongyi-deepresearch-30b-a3b:free",
+            model: "google/gemma-4-31b-it:free",
             messages: [{ role: "user", content: formattedPrompt }],
             temperature: 0.6,
             max_tokens: 1500,

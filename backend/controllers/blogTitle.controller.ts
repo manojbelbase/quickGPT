@@ -25,7 +25,7 @@ export const generateBlogTitle = async (req: Request, res: Response): Promise<vo
         // 🔥 OpenRouter AI call
 
         const aiResponse = await openRouter.post("/chat/completions", {
-            model: "meta-llama/llama-3.3-70b-instruct:free",
+            model: "google/gemma-4-31b-it:free",
             messages: [{ role: "user", content: formattedPrompt }],
             temperature: 0.7,
             max_tokens: 1000,
