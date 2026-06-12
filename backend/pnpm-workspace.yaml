@@ -1,0 +1,4 @@
+allowBuilds:
+  "@clerk/shared": true
+  esbuild: true
+  tesseract.js: true
