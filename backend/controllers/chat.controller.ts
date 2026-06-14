@@ -37,6 +37,7 @@ export const generateChatResponse = async (
         // Usage in your API
         if (userMessageCount >= MAX_REQUESTS) {
             response(res, 429, getRandomRateLimitMessage());
+            return;
         }
 
         // ✅ 2️⃣ Store USER message
