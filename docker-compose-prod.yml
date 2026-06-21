@@ -1,6 +1,6 @@
 services:
   backend:
-    image: ghcr.io/manojx1/quickgpt-backend:latest
+    image: ghcr.io/manojbelbase/quickgpt-backend:latest
     container_name: quickgpt-backend
     restart: unless-stopped
     env_file:
@@ -9,7 +9,7 @@ services:
       - "5005:5005"
 
   frontend:
-    image: ghcr.io/manojx1/quickgpt-frontend:latest
+    image: ghcr.io/manojbelbase/quickgpt-frontend:latest
     container_name: quickgpt-frontend
     restart: unless-stopped
     env_file:
