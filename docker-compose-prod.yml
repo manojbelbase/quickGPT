@@ -1,0 +1,33 @@
+services:
+  server:
+    image: ghcr.io/manojx1/quickgpt-backend:latest
+    container_name: quickgpt-server
+    environment:
+      PORT: 5005
+      DATABASE_URL: ${DATABASE_URL}
+      CLERK_PUBLISHABLE_KEY: ${CLERK_PUBLISHABLE_KEY}
+      CLERK_SECRET_KEY: ${CLERK_SECRET_KEY}
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      CLIPDROP_API_KEY: ${CLIPDROP_API_KEY}
+      OPENROUTER_API_KEY_FOR_CHATBOT: ${OPENROUTER_API_KEY_FOR_CHATBOT}
+      CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME}
+      CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY}
+      CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET}
+      FRONTEND_URL: ${FRONTEND_URL}
+      DEV_FRONTEND_URL: ${DEV_FRONTEND_URL}
+    env_file:
+      - ./backend/.env
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+
+  client:
+    image: ghcr.io/manojx1/quickgpt-frontend:latest
+    container_name: quickgpt-client
+    restart: unless-stopped
+    env_file:
+      - ./frontend/.env
+    depends_on:
+      - server
+    ports:
+      - "80:80"
