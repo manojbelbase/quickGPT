@@ -129,7 +129,11 @@ jobs:
 
             echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u "${{ secrets.GHCR_USER }}" --password-stdin
 
-            docker compose -f docker-compose-prod.yml down
+            docker compose -f docker-compose-prod.yml down || true
+            docker stop quickgpt-frontend 2>/dev/null || true
+            docker rm quickgpt-frontend 2>/dev/null || true
+            sudo fuser -k 80/tcp 2>/dev/null || true
+            sudo systemctl stop nginx 2>/dev/null || true
             docker compose -f docker-compose-prod.yml pull
             docker compose -f docker-compose-prod.yml up -d
 
