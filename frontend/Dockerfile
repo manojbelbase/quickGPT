@@ -5,6 +5,9 @@ WORKDIR /app
 ARG VITE_API_BASE_URL=http://localhost:5005/api
 ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
 
+ARG VITE_CLERK_PUBLISHABLE_KEY
+ENV VITE_CLERK_PUBLISHABLE_KEY=$VITE_CLERK_PUBLISHABLE_KEY
+
 COPY package*.json pnpm-workspace.yaml ./
 
 RUN corepack enable && pnpm install
